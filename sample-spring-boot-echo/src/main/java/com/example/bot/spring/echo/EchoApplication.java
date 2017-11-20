@@ -49,7 +49,7 @@ public class EchoApplication {
     }
 
     @EventMapping
-    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) throws Exception {
         System.out.println("event: " + event);
         getClientHttpResponse("https://attapol-push-message.herokuapp.com/?message=&method=add&user="+event.getSource().getUserId(),"");
         return new TextMessage("Thanks for add friend");
